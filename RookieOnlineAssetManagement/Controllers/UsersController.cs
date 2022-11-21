@@ -37,10 +37,10 @@ namespace RookieOnlineAssetManagement.Controllers
             var currUser = await _userManager.GetUserAsync(User);
             return Ok(currUser);
         }
-        [HttpGet("{id}")]
-        public async Task<ActionResult<UserDto>> GetById(string id)
+        [HttpGet("{staffcode}")]
+        public async Task<ActionResult<UserDto>> GetById(string staffCode)
         {
-            var user = await _userRepository.GetAsync(id);
+            var user = await _userRepository.GetAsync(staffCode);
             if (user == null)
             {
                 return BadRequest("Can not find the user");

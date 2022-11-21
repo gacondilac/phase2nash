@@ -31,10 +31,10 @@ namespace RookieOnlineAssetManagement.Repositories
         }
 
         //_mapper.map<userviewmodel>(user);
-        public async Task<UserDto> GetAsync(string id)
+        public async Task<UserDto> GetAsync(string staffCode)
         {
 
-            var user = await _context.Users.Where(p => p.Id == id).FirstOrDefaultAsync();
+            var user = await _context.Users.Where(p => p.StaffCode == staffCode).FirstOrDefaultAsync();
             var userdto= _mapper.Map<UserDto>(user);
             return _mapper.Map<UserDto>(user);
 
@@ -44,8 +44,8 @@ namespace RookieOnlineAssetManagement.Repositories
         {
             try
             {
-                var user = _context.Users.Find(userDto.Id);
 
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.StaffCode == userDto.StaffCode);
                 if (user != null)
                 {
                     int age = ((int)((DateTime.Now - userDto.DateofBirth).TotalDays / 365));

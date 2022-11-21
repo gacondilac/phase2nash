@@ -5,7 +5,7 @@ namespace RookieOnlineAssetManagement.Models
 {
     public class UserEditDto
     {
-        public string Id { get; set; }
+        public string StaffCode { get; set; }
         public DateTime JoinedDay { get; set; }
         public DateTime DateofBirth { get; set; }
         public string Gender { get; set; }
